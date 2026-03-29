@@ -1,0 +1,760 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Метеорология (5)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1e43e57c-5871-8034-97fb-e311e8b63812" class="page sans"><header><img class="page-cover-image" src="aeb11986-7443-5a15-955c-6135725280d2.jpg" style="object-position:center 34.489999999999995%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="photo_2025-05-07_19-22-47.jpg"/></div><h1 class="page-title" dir="auto">Метеорология (5)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8060-a369-ef3904e4687d" class=""><em><strong><span style="border-bottom:0.05em solid">Примечание</span></strong></em><em>: материал этого конспекта местами повторяет материал конспекта “Климат”. Рекомендуется сначала читать “Климат”, а потом уже этот конспект.</em></p></div><div style="display:contents" dir="auto"><hr id="1e53e57c-5871-800e-aff8-c1e30fd7438a"/></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80c6-b49d-ddfbe9d6143c" class=""><strong><span style="border-bottom:0.05em solid">Метеорология </span></strong>- это наука об атмосфере Земли, ее строении, свойствах и протекающих в ней процессах и явлениях.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80b5-b131-dbfa3f21c705" class="">Совокупность значений метеорологических характеристик и атмосферных явлений, наблюдаемых в некоторый момент времени на данной территории, называется <strong><span style="border-bottom:0.05em solid">погодой.</span></strong></p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8009-b62b-ff5ace640195" class="">Большинство атмосферных явлений происходят в тропосфере (самый нижний слой атмосферы, его верхняя граница находится на высоте 16-18 км на экваторе и 8-10 км в полярных областях), но некоторые атмосферные явления (например, перламутровые и серебристые облака) происходят и в более высоких слоях атмосферы - <strong>стратосфере </strong>и <strong>мезосфере</strong>.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-800f-984c-e605df57ed14" class="">Изменения погоды бывают периодические (Например, суточные или годовые. Обусловлены движением Земли.) и непериодические (чаще всего, обусловлены движением воздушных масс).</p></div><div style="display:contents" dir="auto"><hr id="1e53e57c-5871-8047-8d32-d358c8608d71"/></div><div style="display:contents" dir="auto"><h2 id="1eb3e57c-5871-807e-977c-f929c239d4b4" class="">Строение атмосферы</h2></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-806e-8c46-cfdaa8fbd17e" class="">Атмосфера - газовая оболочка Земли, в которой газ вращается вместе с Землёй как единое целое. Верхнюю границу атмосферы проводят на высотах 500-1000 км над земной поверхностью.</p></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-8019-9f36-df3a6b598ecc" class="">Плотность воздуха и давление в атмосфере Земли непрерывно убывают с высотой. А вот распределение температур более сложное (см. рис. ниже)</p></div><div style="display:contents" dir="ltr"><figure id="1eb3e57c-5871-8082-a59f-fe48c78d6f3f" class="image" style="text-align:left"><a href="image.png"><img style="width:336px" src="image.png"/></a><figcaption>Распределение температуры в атмосфере Земли.</figcaption></figure></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-80c4-9920-f1970416860e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-8045-85ac-d0a2a0633919" class=""><strong><span style="border-bottom:0.05em solid">Слои земной атмосферы:</span></strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8027-b803-fdbdca934954" class="numbered-list" start="1"><li><strong>Тропосфера </strong>- самый нижний слой (верхняя граница находится на высотах 8-20 км и называется тропопаузой). Температура в тропосфере убывает с высотой. Здесь сосредоточено свыше 80% всего атмосферного воздуха. Здесь летают самолеты, образуются циклоны и выпадают атмосферные осадки.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8072-a968-df0a5331007c" class="numbered-list" start="2"><li><strong>Стратосфера </strong>- слой атмосферы, нижней границей которого является тропопауза, а верхняя граница находится на высоте около 50 км. В стратосфере на высоте около 25-30 км располагается озоновый слой (озоновый экран), защищающий земную поверхность от наиболее жесткой части ультрафиолетового излучения. Температура в стратосфере с высотой повышается, достигая локального максимума на верхней границе данного слоя (в стратопаузе). </li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8044-b707-c097242cccc7" class="numbered-list" start="3"><li><strong>Мезосфера </strong>- слой атмосферы, нижняя граница которого совпадает со стратопаузой, а верхняя граница лежит на высотах 80-100 км и называется мезопаузой. Температура убывает с высотой (достигая более низких значений, чем в тропопаузе). В мезосфере начинают светиться (и, как правило, сгорают полностью) метеоры. Здесь образуются самые высокие облака - серебристые.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-80b4-949e-ca11ac703ca4" class="numbered-list" start="4"><li><strong>Термосфера </strong>- слой атмосферы, простирающийся от мезопаузы до высот 600-800 км. Температура здесь возрастает с высотой (причем зачастую скачкообразно) и может достигать 2000К.  На высоте 100 км находится <strong>линия Кармана</strong>, считающаяся нижней границей космического пространства. В термосфере летает большинство искусственных спутников Земли, а также орбитальные космические станции (в данный момент их две — МКС и Тяньгун), а также проводятся пилотируемые орбитальные полеты. Чаще всего именно в термосфере возникают полярные сияния (свечение, вызванное взаимодействием заряженных частиц солнечного ветра с магнитным полем Земли).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8076-a3b5-eb7bd77f0fc6" class="numbered-list" start="5"><li><strong>Экзосфера </strong>- внешний слой атмосферы. Очень разрежен. Согласно некоторым исследованиям, его верхняя граница отстоит от Земли дальше, чем орбита Луны.</li></ol></div><div style="display:contents" dir="auto"><hr id="1eb3e57c-5871-8071-a65b-c08a410f7587"/></div><div style="display:contents" dir="auto"><h2 id="1e43e57c-5871-80c2-a431-ed8b28bb3609" class="">Движения воздушных масс</h2></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80a3-8ccb-f40bef6828ae" class=""><strong><span style="border-bottom:0.05em solid">Воздушная масса</span></strong> — большой объем воздуха в нижней части тропосферы, характеризующийся примерной однородностью своих характеристик (температуры и влажности). Воздушные массы могут иметь горизонтальные размеры в несколько сотен или даже тысяч километров. </p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8030-8043-e92844723749" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-802f-b786-f23a305b7439" class=""><strong><span style="border-bottom:0.05em solid">Воздушные массы классифицируют в зависимости от широты возникновения:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-8077-8486-f68e9548a6ef" class="bulleted-list"><li style="list-style-type:disc"><strong>Арктические/антарктические</strong> воздушные массы (АВМ)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-8040-b3b9-f0dc9527ab51" class="bulleted-list"><li style="list-style-type:disc"><strong>Умеренные </strong>воздушные массы (УВМ)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-80ee-a625-e47ad40c58a4" class="bulleted-list"><li style="list-style-type:disc"><strong>Тропические </strong>воздушные массы (ТВМ)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-8057-82e5-c27b15508734" class="bulleted-list"><li style="list-style-type:disc"><strong>Экваториальные </strong>воздушные массы (ЭВМ)</li></ul></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-805e-88ca-dee896b42561" class="">Также, в рамках каждого из этих типов можно выделить <strong>морские </strong>и <strong>континентальные </strong>воздушные массы.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80e4-905b-c2bb31d355db" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-808e-8c5e-da500d7b135c" class=""><strong><span style="border-bottom:0.05em solid">Теплой (холодной) </span></strong>называют воздушную массу, температура которой в большую (меньшую) сторону отличается от температуры подстилающей поверхности.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80e9-a992-e93257f8e340" class="">Если же воздушная масса длительное время находится над той же территорией, где и сформировалась, ее температура совпадает с температурой подстилающей поверхности. Такую воздушную массу называют <strong><span style="border-bottom:0.05em solid">местной </span></strong>или <strong><span style="border-bottom:0.05em solid">нейтральной</span></strong>.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8063-a4b3-ee2c45821666" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80c7-b0bf-ca8a4075fc23" class=""><strong><span style="border-bottom:0.05em solid">Атмосферные фронты</span></strong> - переходные зоны в тропосфере между различными воздушными массами.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80d2-96c8-e74eb21f5af2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80c5-946c-fa4a8104f017" class=""><strong><span style="border-bottom:0.05em solid">Виды атмосферных фронтов:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-8087-820b-f116cf6cedee" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Тёплые (теплая ВМ “наступает”)</span></strong><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-806d-b2a2-e581bdd6ba67" class="image"><a href="Untitled.png"><img style="width:384px" src="Untitled.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80b6-b0ee-cbe0de6c5e57" class="">Характеризуются плавным увеличением температуры, затяжными, но не очень интенсивными осадками, туманами.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8003-9b66-e8dfa010e5ef" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-80df-b85f-d87b39edca91" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Холодные (холодная ВМ “наступает”)</span></strong><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-8059-8ccd-cd050205998a" class="image"><a href="Untitled%201.png"><img style="width:384px" src="Untitled%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8065-93b4-e284ed0bebd1" class="">Характеризуются резким похолоданием, нестабильной погодой, ливневыми осадками.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8070-8f25-fb3cb09c3ba3" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-80bb-bd48-e12a03ed7392" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Фронты окклюзии</span></strong> (окклюзия - смыкание тёплого и холодного фронтов)</li></ul></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8085-9064-e4c85cec48db" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-80c0-9282-d0a1d999e07a" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Стационарные</span></strong> (статичные или медленно движущиеся фронты, образующиеся между двумя областями высокого давления)</li></ul></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-801c-88b8-e63035c37456" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-8097-9e48-f7c171ebfad2" class="image" style="text-align:left"><a href="Untitled%202.png"><img style="width:672px" src="Untitled%202.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8080-aa6b-c42b80011e33" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-808e-9a24-c7018a2fd960" class=""><strong><span style="border-bottom:0.05em solid">Климатические фронты</span></strong> - среднее положение атмосферных фронтов определенного типа. </p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-805d-b64c-f74e89b6b0a3" class=""><strong><span style="border-bottom:0.05em solid">Основными климатическими фронтами являются:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-80f7-a1d7-f545fe20ca7b" class="bulleted-list"><li style="list-style-type:disc"><strong>Арктический и антарктический</strong> (граница АВМ и УВМ)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-8002-91c2-f7238fba6409" class="bulleted-list"><li style="list-style-type:disc"><strong>Полярный </strong>(граница УВМ и ТВМ. На них формируются циклоны умеренных широт)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e43e57c-5871-809c-8b6b-f9d7793e1cc2" class="bulleted-list"><li style="list-style-type:disc"><strong>Тропический </strong>(Граница ТВМ и ЭВМ. На них формируются тропические циклоны)</li></ul></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8007-8315-c56a45fbfad2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-801b-83bd-ebd93a13b8c6" class="">Каждый из климатических фронтов зимой смещается ближе к экватору, а летом - ближе к полюсам. Именно на положении климатических фронтов и основана классификация климатов Алисова (подробнее см. конспект “Климат”).</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8081-a2f7-f8a47fe5d1eb" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80bd-9a2d-f3f283da445e" class=""><strong><span style="border-bottom:0.05em solid">Также воздушные массы делят на устойчивые (с устойчивой стратификацией) и неустойчивые.</span></strong></p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80cd-94bd-c54741eef1a2" class="">В устойчивой ВМ вертикальный температурный градиент меньше влажноадиабатического (т.е. меньше примерно 6 градусов на километр высоты). В такой воздушной массе слабо развита конвекция (т.е. перемешивание воздуха между ее нижними и верхними слоями). В таких условиях часты слоистые и слоисто-кучевые облака, а также туманы. Но может наблюдаться и ясная, безоблачная погода. Встречаются слои температурной инверсии. </p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80ca-82c9-c316e71f10c9" class="">Про причины и последствия температурных инверсий советую почитать подробнее: <br/><a href="https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_(%D0%BC%D0%B5%D1%82%D0%B5%D0%BE%D1%80%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F)">https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_(%D0%BC%D0%B5%D1%82%D0%B5%D0%BE%D1%80%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F)</a></p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80e7-9ec0-d586cfe519c1" class="">В <strong><span style="border-bottom:0.05em solid">неустойчивых </span></strong>ВМ сильно развита конвекция, часто наблюдаются кучевые облака, ливневые осадки и грозы, переменчивая погода.</p></div><div style="display:contents" dir="auto"><hr id="1e53e57c-5871-80a4-9637-de737fdbfd9c"/></div><div style="display:contents" dir="auto"><h2 id="1e43e57c-5871-8037-ac47-ee0c50ec05e5" class="">Атмосферные вихри</h2></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-803a-bbda-fc2d0dcb9a57" class=""><strong><span style="border-bottom:0.05em solid">Циклон</span></strong> - атмосферный вихрь, в центре которого находится область низкого давления, куда “стекаются ветры”.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-803e-bd94-c163a41d03e5" class="">В северном полушарии циклоны всегда закручиваются против часовой стрелки, в южном наоборот (из-за силы Кориолиса).</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8076-8c2c-d5887e90ee00" class="">Циклон приносит осадки, низкое давление, зимой - оттепель, а летом - похолодание.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-808a-a24c-eaaa8dad092c" class="">Особо разрушительным циклонам даже дают имена (Дориан, Катрина, Ольга и т.п.)</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-805d-950e-cbf8954f3cab" class="">Циклоны крайне редко возникают в непосредственной близости от экватора и на полюсах.</p></div><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-80ab-9f22-f82597426eac" class="image" style="text-align:left"><a href="image%201.png"><img style="width:192px" src="image%201.png"/></a><figcaption>Схема процесса образования циклонов из-за вращения Земли</figcaption></figure></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8094-a69e-d8e4f3ebfc45" class="">Различают два типа циклонов - <strong>внетропические</strong> и <strong>тропические (тайфуны)</strong>. Тропические меньше по размеру, но в них больше барический градиент (скорость изменения давления от центра к краям) и, как следствие, они переносят больше энергии, порождая стихийные бедствия. </p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8058-89b8-fd55f2075fd1" class="">Для тропических циклонов свойственен “глаз бури” — небольшая (20-30 км в диаметре) область хорошей, безоблачной погоды в самом центре циклона.</p></div><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-8081-bedf-db6b7313631c" class="column-list"><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-802b-9dfa-ff20e07ff672" style="width:29.166666666666664%" class="column"><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-803b-b0dc-f82017e40617" class="image"><a href="image%202.png"><img style="width:240px" src="image%202.png"/></a><figcaption>Ураган Дориан у берегов США</figcaption></figure></div></div></div><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-80e1-8ac5-ecb88b63853d" style="width:37.5%" class="column"><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-807b-9679-efe358ac4ed4" class="image" style="text-align:left"><a href="image%203.png"><img style="width:336px" src="image%203.png"/></a><figcaption>Схема тропического циклона (поперечный разрез)</figcaption></figure></div></div></div><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-809c-a33b-ed42d7e3e186" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-806a-b843-d6300e87f18c" class="image"><a href="image%204.png"><img style="width:266.9821472167969px" src="image%204.png"/></a><figcaption>Карта траекторий тропических циклонов.</figcaption></figure></div></div></div></div></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-8042-8646-d67edcc75585" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-807a-9c89-f1e6c43d342d" class=""><strong><span style="border-bottom:0.05em solid">Антициклон</span></strong> - область высокого давления, откуда “растекаются” ветры.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-803e-ac4d-c7344557403e" class="">В северном полушарии закручиваются по часовой стрелке, в южном наоборот.</p></div><div style="display:contents" dir="auto"><p id="1e43e57c-5871-80d4-98fa-fa47256e8fe4" class="">Погода в антициклоне безоблачная, безветренная, безосадочная. Летом - жара, зимой - заморозки (”Мороз и солнце; день чудесный”)</p></div><div style="display:contents" dir="ltr"><figure id="1e43e57c-5871-8049-8cde-cd8363824a00" class="image" style="text-align:left"><a href="Untitled%203.png"><img style="width:384px" src="Untitled%203.png"/></a><figcaption>Схема циклонов и антициклонов для северного полушария</figcaption></figure></div><div style="display:contents" dir="auto"><hr id="1e53e57c-5871-80b9-91bd-dedfd6c75be4"/></div><div style="display:contents" dir="auto"><h2 id="1e43e57c-5871-80a3-aa55-e9df7dfb49f3" class="">Основные характеристики погоды</h2></div><div style="display:contents" dir="auto"><h3 id="1e53e57c-5871-80f3-bdd8-dc22c2a11acc" class="">Атмосферное давление</h3></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80c3-9121-c9580e869e9e" class="">Атм. Давление — это модуль силы, с которой атмосфера Земли давит на все предметы на земной поверхности.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80ee-8fb1-e7d404e97045" class="">Оно чаще всего измеряется в <strong>гектопаскалях </strong>(гПа) или <strong>миллиметрах ртутного столба</strong> (мм рт. ст.).</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-800b-ac25-e220e6def293" class=""><strong><span style="border-bottom:0.05em solid">1 гПа = 0.75 мм рт. ст. </span></strong></p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-803d-99fb-fb5e4d8cb9ea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80e3-b8f5-c214af65c845" class=""><strong><span style="border-bottom:0.05em solid">Нормальным считается атмосферное давление в 760 мм рт. ст. (на уровне моря)</span></strong></p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-805d-927b-c34a56a45e33" class="">Но реальное атм. давление в том или ином месте может значительно отличаться от нормального. На Земле фиксировались значения атмосферного давления от 641 до 816 мм рт. ст. В центральной части торнадо давление может опускаться и ниже 600 мм рт. ст.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8083-b9e3-d25f8acc9756" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8024-8fe1-cfcfb046ee32" class="">При подъеме в горы атмосферное давление падает (примерно на 1 гПа каждые 8 метров)</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8011-9d95-f4cee9f9a5d8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80ef-a86e-ed43951455b9" class="">На картах атм. давление чаще всего обозначается с помощью <strong>изобар </strong>— изолиний, соединяющих точки с равными значениями атмосферного давления.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80f0-b5e3-f6e3a50ca5ab" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="1e53e57c-5871-80b2-a763-e35feea57700" class="">Температура воздуха</h3></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-802a-bad7-f6a3d208ada8" class="">Температура воздуха — важнейшая характеристика как погоды, так и климата.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80bf-8916-f960e6d53a76" class="">Чаще всего температуру воздуха измеряют по шкале Цельсия, которая является относительной. Но есть и альтернатива — абсолютная шкала (шкала Кельвина). Чтобы перевести значения из градусов Цельсия в Кельвины, нужно прибавить 273. Например, 30°С = 303K.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80ee-bbfe-e3eba085f0fd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-808b-8622-de4be1031f56" class="">Температура воздуха в тропосфере уменьшается с высотой. Причем скорость ее изменения зависит от влажности воздуха. В заданиях олимпиад, если не указано иного, можно считать, что температура падает на 1°C каждые 200 м вертикального подъема.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8064-868f-c1cf419accdb" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80a2-8e30-f7d3be7483b1" class=""><strong><span style="border-bottom:0.05em solid">Некоторые температурные рекорды:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8010-a426-e42e20fc5dad" class="bulleted-list"><li style="list-style-type:disc"><strong>Самая высокая официально зарегистрированная температура:</strong> 56.7˚C (июль 1913 года, Долина Смерти, Калифорния, США). Но есть и неофициальные рекорды: <div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80e8-abea-f99416022444" class="bulleted-list"><li style="list-style-type:circle">58.2˚C (сентябрь 1922, г. Эль-Азизия, Ливия)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8006-99a8-cd9ea4f50ee8" class="bulleted-list"><li style="list-style-type:circle">70.7˚C (2005 год, пустыня Деште-Лут, Иран)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80fd-b932-dd8c6ca6d0f7" class="bulleted-list"><li style="list-style-type:disc"><strong>Самая низкая официально зарегистрированная температура: </strong>−89,2˚C (июль 1983 года, станция “Восток”, Антарктида). Самая низкая среднегодовая температура на Земле - там же (примерно -57˚C).<div style="display:contents" dir="auto"><ul id="1e53e57c-5871-803d-b157-c6621eb74cd8" class="bulleted-list"><li style="list-style-type:circle">Неофициальный рекорд: −93,2˚C, зарегистрированные в Антарктиде с помощью спутника в 2013 году.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80ca-a91f-cc1e92e8c777" class="bulleted-list"><li style="list-style-type:disc"><strong>Самая высокая среднегодовая температура: </strong>34.4˚C (Даллол, Эфиопия)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-801e-872a-f0b15f569f51" class="bulleted-list"><li style="list-style-type:disc"><strong>Самая низкая температура, зарегистрированная в Северном полушарии: </strong>−67,7°С (1933 год, село Оймякон в Якутии) или −67,8°С (1885 год, город Верхоянск в Якутии). Спор между этими двумя населенными пунктами за звание полюса холода северного полушария до сих пор не решен окончательно.</li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-800d-89d2-d70e3955cf8a" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="1e53e57c-5871-806a-a318-d79f27f5c1ea" class="">Влажность воздуха</h3></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8037-8c7b-fa0ccdcc88e7" class=""><strong>Абсолютная влажность </strong>- количество водяного пара, содержащееся в воздухе (измеряется в граммах на кубометр)</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-800a-89f6-f62c42e79d78" class="">При разной температуре воздух может вместить в себя разное количество водяного пара (чем теплее - тем больше). Если пара становится слишком много, влага конденсируется (выпадает в виде осадков).</p></div><div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80d6-93a2-c22f57dabca7" class="image" style="text-align:left"><a href="image%205.png"><img style="width:528px" src="image%205.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80f9-9731-cf2722b4ae45" class=""><strong>Относительная влажность </strong>- отношение абсолютной влажности в данный момент к максимальному количеству водяного пара, которое воздух может вместить при данной температуре, выраженное в процентах.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-808c-b947-e194f8ebbae2" class=""><strong><span style="border-bottom:0.05em solid">Точка росы </span></strong>— температура, при котором воздух с данным значением абсолютной влажности достигает 100-процентной относительной влажности. При дальнейшем охлаждении воздуха, достигшего точки росы, влага из него начнет конденсироваться.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80cc-8a60-fd3551d1d772" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80fa-90e9-f4737e59914b" class="">В экваториальных широтах среднегодовые значения относительной влажности превышают 85%. Низкими считаются значения относительной влажности менее 50%. Их часто можно наблюдать в тропических пустынях, а также летом в районах умеренного резко-континентального климата.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8024-85a6-f4e6c3c16f63" class="">Средние значения относительной влажности на территории РФ представлены на картах ниже. Обратите внимание, насколько сильны различия между летними и зимними значениями для одних и тех же территорий.</p></div><div style="display:contents" dir="auto"><div id="1e53e57c-5871-804f-9402-ebed801a3a10" class="column-list"><div style="display:contents" dir="auto"><div id="1e53e57c-5871-8004-bd36-eaec707c7bea" style="width:68.75%" class="column"><div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80cc-993b-f3bebaeea730" class="image"><a href="image%206.png"><img style="width:582.3035888671875px" src="image%206.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1e53e57c-5871-806c-a1c2-f21161ad5fcb" style="width:31.249999999999993%" class="column"><div style="display:contents" dir="auto"><p id="1e53e57c-5871-800e-9f2c-f92c73c9f644" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="1e53e57c-5871-80ba-a1df-c3c1602ebc3b" class="">Осадки</h3></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8094-b40f-ed0008ab9f40" class=""><strong><span style="border-bottom:0.05em solid">Виды осадков:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80ed-8aae-dc3ac684fc46" class="bulleted-list"><li style="list-style-type:disc"><strong>Дождь </strong>- водяные капли от 0.5 до 5 мм в диаметре</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-807b-81f9-d6ef18e7f547" class="bulleted-list"><li style="list-style-type:disc"><strong>Снег </strong>- в виде снежинок или хлопьев</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8055-a571-dddd204d3c35" class="bulleted-list"><li style="list-style-type:disc"><strong>Ледяной дождь </strong>- выпадает при наличии температурной инверсии (капли дождя, выпадающие из облаков, начинают замерзать в нижних, более холодных слоях атмосферы, образуются “ледяные шарики”, внутри которых находится незамерзшая вода). Часто приводит к образованию гололеда и гололедицы</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-801f-a02a-e96049264c76" class="bulleted-list"><li style="list-style-type:disc"><strong>Морось </strong>- жидкие осадки в виде очень мелких капель, которые парят в воздухе.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8023-abba-c7f51d1d4ea7" class="bulleted-list"><li style="list-style-type:disc"><strong>Снежные зерна</strong> - твердые осадки в виде очень мелких непрозрачных белых частиц</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80b5-9b55-cee7ee9ef339" class="bulleted-list"><li style="list-style-type:disc"><strong>Снежная крупа </strong>- твёрдые осадки ливневого характера, выпадающие при температуре воздуха около нуля градусов и имеющие вид непрозрачных белых крупинок диаметром 2—5 мм; крупинки хрупкие, легко раздавливаются пальцами (в отличие от града). </li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-808f-8a99-e591b9861a8e" class="bulleted-list"><li style="list-style-type:disc"><strong>Ледяная крупа </strong>- твёрдые осадки ливневого характера, выпадающие при температуре воздуха от −5 до +10° в виде прозрачных (или полупрозрачных) ледяных крупинок диаметром 1—3 мм; в центре крупинок — непрозрачное ядро. Крупинки достаточно твёрдые (раздавливаются пальцами с некоторым усилием), при падении на твёрдую поверхность отскакивают.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-800a-af03-ddaad66ae225" class="bulleted-list"><li style="list-style-type:disc"><strong>Град </strong>- твёрдые осадки, выпадающие в тёплое время года (при температуре воздуха выше +10°) в виде кусочков льда различной формы и размеров: обычно диаметр градин составляет 2—5 мм, но в ряде случаев отдельные градины достигают размеров голубиного и даже куриного яйца. Продолжительность града, как правило, невелика (несколько минут).</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80ec-868c-d7c3caed8378" class="bulleted-list"><li style="list-style-type:disc"><strong>Ледяные иглы</strong> - твёрдые осадки в виде мельчайших ледяных кристаллов, парящих в воздухе, образующиеся в морозную погоду (температура воздуха ниже −10…−15°). Днём сверкают в свете лучей солнца, ночью — в лучах луны или при свете фонарей. Часто ледяные иглы образуют в ночное время красивые светящиеся «столбы», идущие от фонарей вверх в небо.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-802c-b0f8-c5715b44e5d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Роса </strong>- капельки воды, образующиеся на поверхности земли, растениях и любых предметах при конденсации атмосферной влаги непосредственно из воздуха.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8032-a4b1-db8ad305e1b9" class="bulleted-list"><li style="list-style-type:disc"><strong>Иней </strong>- аналог росы, образующийся при отрицательной температуре. Процесс образования кристалликов льда из водяного пара, взвешенного в воздухе, называется десублимацией.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80ce-9f48-da7e1950970d" class="bulleted-list"><li style="list-style-type:disc"><strong>Гололед </strong>- слой  льда, образующийся на растениях, проводах, предметах, поверхности земли в результате намерзания частиц осадков (переохлаждённой мороси, переохлаждённого дождя, ледяного дождя, ледяной крупы, иногда дождя со снегом) при соприкосновении с поверхностью, имеющей отрицательную температуру. Сильный гололед может приводить к обрыву проводов и обламыванию веток деревьев.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8006-8a17-d992f3b48706" class="bulleted-list"><li style="list-style-type:disc"><strong>Гололедица </strong>- Слой льда, образующийся на поверхности земли (и только земли, в этом основное отличие от гололеда) в результате замерзания воды после оттепели.</li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8062-878f-e0fd8ce7d4ea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80fd-9323-d9a08f86bbc7" class="">Количество выпадающих осадков измеряется в миллиметрах и является важнейшей характеристикой климата.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-807c-ba03-ca23bc737c1e" class="">Но не менее важна и сезонность выпадения осадков (наличие сухого/влажного сезонов).</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8055-a1c4-c513fef992aa" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="1e53e57c-5871-80d1-a65a-c3585bfcbe70" class="">Облака</h3></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-808f-a39b-c5cd70a4f73d" class="">Облака состоят из очень мелких капель воды или кристалликов льда. Когда эти капли/кристаллы увеличиваются в размерах и становятся тяжелее, из облака выпадает дождь, снег или иные виды осадков. </p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-809c-9de1-d5ba62b99b84" class="">При температуре выше -10°C облака преимущественно состоят из мелких капель воды. При температуре ниже -10°C — преимущественно из кристалликов льда. Также есть облака смешанного состава, которые состоят из смеси водяных капель и ледяных кристаллов.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8026-adc2-e11d5fbcf814" class="">Осадки, как правило, выпадают из облаков, имеющих смешанный состав (кучево-дождевые, слоисто-дождевые, высоко-слоистые)</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8018-9db0-d327ef3ccb1c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8064-8164-c5242b9d7a82" class=""><strong>Большинство облаков образуются в тропосфере</strong>, но есть и исключения:</p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80bf-88ec-cbaf22bb336b" class="bulleted-list"><li style="list-style-type:disc"><strong>Перламутровые </strong>облака (образуются в стратосфере на высоте 20-25 км)</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80aa-a70e-d8946f232f1d" class="bulleted-list"><li style="list-style-type:disc"><strong>Серебристые </strong>облака (образуются в мезосфере на высотах до 80 км)</li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80a4-86fd-fca614101269" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80c6-9b54-e9ef9b524b1b" class=""><strong><span style="border-bottom:0.05em solid">Виды облаков:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8018-bee3-c995fccc56ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Перистые —</strong> образуются в верхних слоях тропосферы, состоят из мелких кристалликов льда, имеют значительную вертикальную протяженность и рваную структуру. Такие облака, наблюдаемые на закате, считаются предвестниками хорошей погоды.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8013-bdc9-d474e544c764" class="image"><a href="image%207.png"><img style="width:240px" src="image%207.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8066-bfbe-efbecc702a5a" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80aa-924c-fbe952c94385" class="bulleted-list"><li style="list-style-type:disc"><strong>Перисто-кучевые —</strong> образуются на значительных высотах, визуально похожи на рябь на поверхности воды. Осадки из них не выпадают, но они считаются предвестниками ухудшения погоды.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8062-b0cc-cd0676bbe412" class="image"><a href="image%208.png"><img style="width:240px" src="image%208.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80cd-8cfe-eebc73093f97" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80a4-8479-c484f3966176" class="bulleted-list"><li style="list-style-type:disc"><strong>Перисто-слоистые — </strong>имеют вид однородной белесоватой пелены, сквозь которую, тем не менее, просвечивает Солнце/Луна. Образуются в верхних слоях тропосферы.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8089-9056-de091d79f502" class="image"><a href="image%209.png"><img style="width:288px" src="image%209.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8033-9e2e-f28aaf357d03" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80b1-8be0-f7043371e9dd" class="bulleted-list"><li style="list-style-type:disc"><strong>Высококучевые —</strong> в виде хлопьев, разделенных просветами. Типичны для теплого сезона. Образуются на высотах 2-6 км. Часто наблюдаются при прохождении холодного фронта, поэтому могут быть предвестниками ливней/гроз.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80fb-a7bb-e326501a78b1" class="image"><a href="image%2010.png"><img style="width:240px" src="image%2010.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80ab-a865-c47c4341cbff" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80e7-a894-ed574496de33" class="bulleted-list"><li style="list-style-type:disc"><strong>Высокослоистые —</strong> имеют вид однородной волнистой пелены серого/синеватого цвета. Образуются на высотах 3-5 км. Могут приносить обложные осадки.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80da-8762-dfb411f2e672" class="image"><a href="image%2011.png"><img style="width:240px" src="image%2011.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80d3-8112-d11a0332c7fd" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80d1-933e-db46d10c56c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Слоисто-дождевые —</strong> темно-серые/темно-синеватые. Обязательно выпадение обложных осадков.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8082-b645-c34e8e9ca843" class="image"><a href="image%2012.png"><img style="width:240px" src="image%2012.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80fb-89ab-fefe8fff7dce" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80d0-9e15-d274ba8fc27c" class="bulleted-list"><li style="list-style-type:disc"><strong>Слоисто-кучевые </strong>- крупные гряды хлопьев/пластин, с редкими просветами. Образуются на высотах до 2 км. Осадки из них, как правило, не выпадают.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8082-88e1-cdeac0a1e9ab" class="image"><a href="image%2013.png"><img style="width:336px" src="image%2013.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8023-8f83-f3e8526d4dc6" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8027-b04a-cbfa5c225019" class="bulleted-list"><li style="list-style-type:disc"><strong>Слоистые </strong>— похожи на туман. Образуются на небольшой высоте над землей (от нескольких десятков до нескольких сотен метров). Из них могут выпадать осадки в виде мороси.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80c3-9373-c7b895482e50" class="image"><a href="image%2014.png"><img style="width:336px" src="image%2014.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80bd-ab9b-f287703e4262" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8083-ba88-d339c17e006b" class="bulleted-list"><li style="list-style-type:disc"><strong>Кучевые </strong>— имеют значительную высоту (до нескольких километров). Нижняя граница облака находится не очень высоко (обычно на высоте 1-2 км). Возникают при конвективном подъеме теплого воздуха.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-809e-85d4-e18d37244cbf" class="image"><a href="image%2015.png"><img style="width:336px" src="image%2015.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80bf-9580-ce784a82d837" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-808a-bbe3-d27c19d14047" class="bulleted-list"><li style="list-style-type:disc"><strong>Кучево-дождевые — </strong>облака с сильным вертикальным развитием (могут достигать высот 14-16 км). Приносят интенсивные ливневые осадки. Часто с грозой и/или градом.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80ae-9354-c9c94e450b40" class="image"><a href="image%2016.png"><img style="width:336px" src="image%2016.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8086-b524-fc55b18d571d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80b8-90de-e86998707098" class=""><strong>Схема основных видов облаков:</strong></p></div><div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80b6-933f-e01a728c7860" class="image"><a href="image%2017.png"><img style="width:528px" src="image%2017.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8024-b7b3-cbbb5d7030b2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80af-89ad-ff13f7c9faa1" class=""><strong><span style="border-bottom:0.05em solid">Ниже приведены более необычные типы облаков:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-807a-8bb8-fd1d248e8c5e" class="bulleted-list"><li style="list-style-type:disc"><strong>Серебристые </strong>- образуются на очень больших высотах (50-80 км). Видимы, как правило, в глубоких сумерках (когда Солнце освещает их из-за горизонта).<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80bf-afe9-c04cf348c89d" class="image"><a href="image%2018.png"><img style="width:240px" src="image%2018.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80b7-ac46-f4d53cba1213" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-806b-b906-d9b33dd09806" class="bulleted-list"><li style="list-style-type:disc"><strong>Перламутровые</strong> - образуются в стратосфере при наличии в ней ядер конденсации (чаще всего это аэрозоли и взвешенные частицы, например вулканический пепел).<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8047-8ad3-d332d62752ca" class="image"><a href="image%2019.png"><img style="width:288px" src="image%2019.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8004-be54-c3a164311cf1" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-806f-9a82-e7d6e771730e" class="bulleted-list"><li style="list-style-type:disc"><strong>Вымеобразные (трубчатые) — </strong>Встречаются редко, преимущественно в жаркую погоду, связаны с развитием кучево-дождевых облаков, — при низкой влажности воздуха в подоблачном слое и значительном изменении скорости ветра с высотой вблизи уровня нижней границы облаков.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-8068-bbd3-da20e705fa39" class="image"><a href="image%2020.png"><img style="width:336px" src="image%2020.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80dc-8537-e402995a894e" class="bulleted-list"><li style="list-style-type:disc"><strong>Лентикулярные </strong>— имеют линзовидную форму, образуются на гребнях воздушных волн (зачастую — когда воздух переваливается через горный хребет или отдельную вершину). Остаются неподвижными длительное время.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-800c-8a67-e0531fda552b" class="image"><a href="image%2021.png"><img style="width:288px" src="image%2021.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80e9-b665-defee222f0d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Пирокумулятивные —</strong> буквально “огненные облака”. Образуются благодаря восходящим конвективным потокам теплого воздуха, образующимся благодаря пожару или извержению вулкана.<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80e5-a5bf-dedfecb81dad" class="image"><a href="image%2022.png"><img style="width:240px" src="image%2022.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80b9-868a-e6973384d46c" class="">
+</p></div></li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80e4-93a5-cb76ec8e0487" class="">Облачность — важная характеристика не только погоды, но и климата. Облака имеют высокое альбедо, поэтому высокая облачность способствует охлаждению. С другой стороны, облака усиливают парниковый эффект.</p></div><div style="display:contents" dir="auto"><h3 id="1e53e57c-5871-80ab-ad0c-e8e5e00d5f23" class="">Ветер</h3></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8057-a910-d109bd65f760" class=""><strong><span style="border-bottom:0.05em solid">Ветер </span></strong>- движение воздуха из области более высокого в область более низкого атмосферного давления.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8069-bf32-d39f210e454c" class="">Ветры характеризуются скоростью, направлением и масштабом (глобальные/местные), а также силами, которые их вызывают.</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-80df-9b97-f7789e92097e" class="">Направление ветра — та сторона света, ОТКУДА дует ветер.</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80f2-bff7-c4b890e4325d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80cc-891e-eb4e8e4b5b1e" class=""><strong><span style="border-bottom:0.05em solid">Глобальные постоянные ветры:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8091-81c6-ea352b189c5b" class="bulleted-list"><li style="list-style-type:disc"><strong>Пассаты</strong> - ветры, дующие в направлении от тропиков к экватору, отклоняясь на запад из-за силы Кориолиса. В северном полушарии пассаты имеют северо-восточное направление, а в южном - юго-восточное</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-80ab-8d43-d803f91b5159" class="bulleted-list"><li style="list-style-type:disc"><strong>Западные ветры</strong> умеренных широт</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8080-9b72-fefb2027108d" class="bulleted-list"><li style="list-style-type:disc"><strong>Восточные ветры </strong>приполярных областей</li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-800c-8b0a-dc59314a0205" class="">Подробнее про глобальную циркуляцию атмосферы см. конспект “Климат”</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80f7-ba74-cb4ee7ffc20e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8013-9cb7-d6011a5d9835" class=""><strong><span style="border-bottom:0.05em solid">Ветры, периодически меняющие свое направление:</span></strong></p></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8011-8203-c19b9f9b75b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Муссоны </strong>(дуют летом с моря на сушу, а зимой - в обратном направлении). Иногда их относят к глобальным ветрам. Подробнее про районы и причины возникновения муссонов см. конспект “Климат”.</li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-805e-92d2-c875c7bceac2" class="bulleted-list"><li style="list-style-type:disc"><strong>Бризы </strong>(дуют днем с моря на сушу, а ночью - наоборот). Их возникновение вызвано разницей теплоемкостей воды и горных пород, слагающих сушу. Вода медленнее нагревается и остывает, нежели суша. Поэтому днем над более нагретой сушей формируются восходящие конвективные потоки нагретого воздуха, что приводит к образованию зоны пониженного давления, поэтому ветер устремляется в направлении суши. Ночью все наоборот (так как водная поверхность имеет более высокую температуру в сравнении с сушей).<div style="display:contents" dir="ltr"><figure id="1e53e57c-5871-80ba-8702-da3b16c7661a" class="image"><a href="image%2023.png"><img style="width:240px" src="image%2023.png"/></a><figcaption>Схема бриза (вверху - дневная картина, внизу - ночная)</figcaption></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1e53e57c-5871-8002-a256-fb3de89a6e86" class="bulleted-list"><li style="list-style-type:disc"><strong>Горно-долинные ветры</strong> — аналог бризов. Вызваны тем, что над взгорьями воздух прогревается и остывает интенсивнее, нежели в долинах. Днем ветер дует из долин, а ночью - обратно.</li></ul></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8083-8862-cf3aa9f98e0b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-80fb-8d9c-ee3d92925399" class=""><strong><span style="border-bottom:0.05em solid">Некоторые местные ветры:</span></strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="1e53e57c-5871-80fa-9dbb-cbdf03d2b11d" class="numbered-list" start="1"><li><strong>Фён </strong>(аналогично - <strong>Чинук, Санта-Ана</strong> и проч. локальные названия) — сухой ветер, дующий с гор.<div style="display:contents" dir="auto"><p id="1e53e57c-5871-80a5-9743-d4635e36c92a" class="">Механизм образования фёна следующий: поднимаясь по склонам гор, воздух охлаждается, достигает точки росы, влага из него конденсируется (выпадают осадки). Затем, перевалившись через горный хребет, воздушная масса опускается, нагревается, вследствие чего уменьшается ее относительная влажность (абсолютная влажность при этом не меняется). Так и возникает сухой ветер - фён. На подветренных склонах горных хребтов, как правило, выпадает значительно меньше осадков, нежели на наветренных. Этот эффект носит название дождевой тени.</p></div><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-80e7-a95a-c4ad032eb782" class="image"><a href="image%2024.png"><img style="width:480px" src="image%2024.png"/></a><figcaption>Чинук (фён), схема образования.</figcaption></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-80ba-bd13-f0293c1521d1" class="numbered-list" start="2"><li><strong>Бора </strong>- порывистый холодный ветер, дующий на побережьях морей с горных хребтов. Образуется, когда невысокий горный хребет разделяет теплый воздух (над побережьем) и холодный, и холодная ВМ переваливается. Может достигать силы 40-60 м/с, приносит резкое похолодание, брызги морской воды намерзают на корпуса кораблей, причалы и портовые механизмы.<br/>Бора часто происходит в Новороссийске, делая невозможной работу порта. Аналогами боры являются французский <strong>мистраль </strong>и чукотский <strong>южак</strong>.<div style="display:contents" dir="ltr"><figure id="1eb3e57c-5871-802b-a119-df337c0775e0" class="image"><a href="image%2025.png"><img style="width:336px" src="image%2025.png"/></a><figcaption>Последствия боры в порту Новороссийска</figcaption></figure></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-80bf-942a-cdf219d6b48e" class="">Бора, наряду с ледниковыми ветрами, является примером <strong>катабатического </strong>ветра (т.е. ветра, вызванного нисходящим движением холодного воздуха под действием силы тяжести). </p></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-807d-b1f0-d2e5ccdf7ab5" class="">
+</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-80a5-9351-c90b03ab445f" class="numbered-list" start="3"><li><strong>Названия основных местных ветров в Средиземноморье:</strong><div style="display:contents" dir="ltr"><figure id="1eb3e57c-5871-80c3-a98f-d03f4f010d92" class="image" style="text-align:left"><a href="image%2026.png"><img style="width:480.0000305175781px" src="image%2026.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-809b-bf40-d2b1e7bafb77" class="">
+</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-80fe-ade0-f6c9f5db3de3" class="numbered-list" start="3"><li><strong>Названия основных местных ветров на Байкале:</strong><div style="display:contents" dir="ltr"><figure id="1eb3e57c-5871-807f-9046-c3b6544e03b7" class="image"><a href="image%2027.png"><img style="width:432px" src="image%2027.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1eb3e57c-5871-804e-8bde-cea924b2c46e" class="">
+</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8034-acef-cb4f54cf0815" class="numbered-list" start="4"><li><strong>Самум </strong>- очень сухой горячий ветер, наблюдающийся в пустынях Африки и Аравийского полуострова. Часто сопровождается песчаными бурями и грозами. Обычно перед началом самума пески начинают «петь» из-за трения песчинок друг о друга.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8014-9ca2-f8199f856863" class="numbered-list" start="5"><li><strong>Харматан </strong>- сухой жаркий пассат в Сахеле (на берегу Гвинейского залива). Приносит пыль и песок с Сахары.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-80d6-a7f1-e72c3c49a624" class="numbered-list" start="6"><li><strong>Хамсин </strong>- сухой жаркий ветер, приносящий пыль и песок из Сахары. Наблюдается на северо-востоке Африки (Египет, Судан) и в странах Ближнего Востока. Обычно наблюдается весной (после дня равноденствия).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8026-89c7-c4fcc1a44197" class="numbered-list" start="7"><li><strong>Суховей </strong>- сухой жаркий ветер в степных, лесостепных, полупустынных зонах. Образуется по краям антициклонов. Вреден для земледелия, т.к. иссушает почву и листья растений.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1eb3e57c-5871-8030-9a7a-da7666858b5c" class="numbered-list" start="8"><li><strong>Зефир </strong>- западный ветер, господствующий в восточной части средиземноморья. Считается легким и приятным, но может приносить бури и грозы.</li></ol></div><div style="display:contents" dir="auto"><h2 id="1e43e57c-5871-807f-b071-edf03ce5c01e" class="">Атмосферные явления</h2></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-808f-b425-d1426255bfce" class=""><strong>Атмосферные осадки (гидрометеоры)</strong>, рассмотренные выше, — лишь одна из категорий атмосферных явлений.<br/>Также существуют:</p></div><div style="display:contents" dir="auto"><ul id="1ec3e57c-5871-80e5-b5c8-e2ae450c1c1c" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Литометеоры </span></strong>(от греч. “камень, парящий в воздухе”) — атмосферные явления, связанные с взвешенными в воздухе твердыми частицами. Примеры — песчаная буря, мгла</li></ul></div><div style="display:contents" dir="auto"><ul id="1ec3e57c-5871-801b-bdd8-f73c87ef9823" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Электрические явления</span></strong> — молния, шаровая молния, огни Святого Эльма и т.п. </li></ul></div><div style="display:contents" dir="auto"><ul id="1ec3e57c-5871-806e-8341-e6acb4448763" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Оптические явления</span></strong> — их возникновение связано с преломлением/дифракцией солнечного или иного света в атмосфере. Примеры - радуга, гало, миражи, световые столбы и т.п. </li></ul></div><div style="display:contents" dir="auto"><ul id="1ec3e57c-5871-8038-ae59-de1c29fb647c" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Прочие</span></strong>. Например, смерчи.</li></ul></div><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-80b3-9962-ffa81cccaf0a" class="column-list"><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-8072-8e3e-ee3f530038f4" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-801e-a068-f461c59c200f" class="image"><a href="image%2028.png"><img style="width:1280px" src="image%2028.png"/></a><figcaption>Пыльная (песчаная) буря в Ираке.</figcaption></figure></div></div></div><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-801b-b561-ebce152d2519" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8092-8055-d7dcb322b450" class="image"><a href="image%2029.png"><img style="width:266.9821472167969px" src="image%2029.png"/></a><figcaption>Шаровая молния - одно из наименее изученных атмосферных явлений</figcaption></figure></div></div></div><div style="display:contents" dir="auto"><div id="1ec3e57c-5871-80d0-b1e5-c582ae72eecc" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8006-9e02-fe837d89da51" class="image"><a href="image%2030.png"><img style="width:1280px" src="image%2030.png"/></a><figcaption>Световые столбы - оптическое явление, наблюдаемое в морозную погоду из-за отражения света от взвешенных в воздухе кристалликов льда.</figcaption></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h2 id="1e43e57c-5871-80f3-8d0b-cb5e893f2fb7" class="">Синоптические карты</h2></div><div style="display:contents" dir="auto"><p id="1e53e57c-5871-8024-b4a3-cfea9bf49551" class="">(не путать с климатическими картами)</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-80e9-bd53-e1a943a50c35" class="">На синоптических картах отражены результаты метеорологических наблюдений на множестве метеостанций в определенный момент времени.</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-80d7-b4f4-dc469bc910b9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-807f-88de-cfe75343abee" class=""><strong><span style="border-bottom:0.05em solid">Что отражено на синоптических картах:</span></strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-8013-bb53-d0282d33b250" class="numbered-list" start="1"><li><strong>Температура </strong>(подписывается на карте рядом с пунктом наблюдения, см. пример ниже)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-8072-a3c1-f64268e34132" class="numbered-list" start="2"><li><strong>Распределение атмосферного давления</strong> (с помощью изобар и подписей в пунктах наблюдения, а также обозначения центров высокого и низкого давления). Важное уточнение — чаще всего атмосферное давление на уровне моря колеблется в пределах 940-1050 гПа, поэтому часто цифры, стоящие в разрядах сотен и тысяч, на синоптические карты не наносятся (например, если атм. давление составляет 965.5 гПа, на синоптическую карту будут нанесены цифры 655. А если давление составляет 1003.3 гПа, на синоптическую карту будет нанесены цифры 033).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-8048-b03a-e5828865a9db" class="numbered-list" start="3"><li><strong>Атмосферные фронты</strong><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8007-b352-e6a727d0467e" class="image"><a href="image%2031.png"><img style="width:106.00000762939453px" src="image%2031.png"/></a></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-80ef-851e-c02af5885728" class="numbered-list" start="4"><li><strong>Ветер </strong>(направление и сила)<div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8093-8ec3-eab5da676cff" class="image"><a href="image%2032.png"><img style="width:336px" src="image%2032.png"/></a><figcaption>Направление полета “стрелы” совпадает с направлением ветра. Например, на этой картинке все ветры дуют слева направо.</figcaption></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-80c3-a5b4-ca3c355322b3" class="numbered-list" start="5"><li><strong>Атмосферные явления</strong><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8007-a3c9-fd701abf676c" class="image"><a href="image%2033.png"><img style="width:288px" src="image%2033.png"/></a></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-8032-8dfb-cd7ef733020b" class="numbered-list" start="6"><li><strong>Характер облачности </strong>(Белый кружок = безоблачное небо, черный = сплошная облачность. Также возможны промежуточные варианты. См пример ниже)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-80f1-8837-c3f89be6d243" class="numbered-list" start="7"><li><strong>Характер изменения давления в пунктах наблюдения за последнее время</strong> (чаще всего за 3 часа)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1ec3e57c-5871-805a-b030-e5ac26e674aa" class="numbered-list" start="8"><li><strong>Точка росы</strong></li></ol></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-80ca-b57c-fdcc867aff7c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-804f-8e59-c256444992bb" class=""><strong><span style="border-bottom:0.05em solid">Пример изображения состояния погоды на некоторой метеостанции на синоптической карте:</span></strong></p></div><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8077-bd9b-f6e6c61b5e67" class="image" style="text-align:left"><a href="6866de05-a600-4df7-b5e2-603a1a30e297.png"><img style="width:600.2484472049689px" src="6866de05-a600-4df7-b5e2-603a1a30e297.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-8086-96c7-c92b5208d74a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-804c-a5e0-ed6663af28fc" class=""><strong><span style="border-bottom:0.05em solid">Пример синоптической карты:</span></strong></p></div><div style="display:contents" dir="ltr"><figure id="1ec3e57c-5871-8066-b1b8-df73345444c3" class="image" style="text-align:left"><a href="image%2034.png"><img style="width:672px" src="image%2034.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-80a6-a717-f2fbcbc95b5e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-808d-9196-febc350e6e92" class=""><strong><span style="border-bottom:0.05em solid">Здесь всегда можно посмотреть актуальные синоптические карты:</span></strong></p></div><div style="display:contents" dir="auto"><p id="1ec3e57c-5871-8018-82f6-d519680b0d5b" class=""><a href="https://meteoinfo.ru/mapsynop">https://meteoinfo.ru/mapsynop</a></p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
